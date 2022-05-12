@@ -16,8 +16,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api")
 public class UserCommandController {
-    @Autowired
-    public CommandGateway commandGateway;
+    public final CommandGateway commandGateway;
+
+    public UserCommandController(CommandGateway commandGateway) {
+        this.commandGateway = commandGateway;
+    }
 
     @PostMapping
     public String createUser(@RequestBody UserRestModel userRestModel) {
